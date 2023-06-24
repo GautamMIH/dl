@@ -1,0 +1,342 @@
+
+
+.cTitle{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 157%;
+    letter-spacing: 0.1em;
+    padding: 5px 20px;
+    padding-left: 20px;
+    padding-right: 0px;
+    
+    position: relative;
+    width: max-content;
+    span{
+        z-index: 1;
+        position: relative;
+        font-style: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        letter-spacing: inherit; 
+        color: inherit;
+    }
+    &::before{
+        position: absolute;
+        background: rgba(18, 121, 190, 0.2);
+        z-index: 0;
+        width: 40px;
+        height: 100%;
+        content: "";
+        border-radius: 10px;
+        top: 0;
+        left: 0;
+    }
+    &--white{
+        color: #fff;
+        &::before{
+            background: rgba(255, 255, 255, 0.38);
+        }
+    }
+    &--black{
+        color: #474747;
+    }
+    &--brown{
+        color: #963337;
+    }
+    &--yellow{
+        color: #474747;
+        &::before{
+            background: rgba(255, 224, 62, 0.49);
+        }
+    }
+}
+
+.cSectionText{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.2rem;
+    line-height: 29px;
+    text-align: center;
+
+    &--white{
+        color: #fff;
+    }
+    &--black{
+        color: #464646;
+
+    }
+    &--blue{
+        color: #1279BE;
+
+    }
+    &--yellow{
+        color:#FCFF58 ;
+    }
+}
+
+@keyframes goUp {
+    0%{
+      top: 70%;
+      transform: scale(1);
+      opacity: 0;
+    }
+    40%{
+      opacity: 1;
+    }
+    100%{
+      top: 0;
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+.cBtn{
+    border-radius: 0px;
+    display: flex;
+    font-family: inherit;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+    border-radius: 10px;
+    &--blue{
+        background: $blue;
+    }
+    &--brown{
+        background: #963337;
+    }
+    &--yellow{
+        background: #FBFF25;
+        span{
+            color: #079998 ;
+
+        }
+    
+    }
+    &--red{
+        background-color: $red;
+    }
+
+    &--orange{
+        background-color: #f37022;
+    }
+    &:hover{
+        background: $green;
+        span{
+            color: #fff;
+            animation: btnTransform .5s linear;
+        }
+    }
+    span,&__span{
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 157%;
+        color: #FFFFFF;
+        padding:8px 20px;
+    }
+    &--white{
+        background-color: #fff;
+        span{
+            color: #474747 ;
+        }
+        &:hover{
+            span{
+                color: #fff;
+            }
+        }
+    }
+    &--greyWhite{
+        background: #F3F3F3;
+        span{
+            color: #474747;
+        }
+    }
+    @keyframes btnTransform{
+        0%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+    
+        20%{
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+    
+        60%{
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    
+        80%{
+            transform: translateX(50%);
+            opacity: 0;
+        }
+    
+        100%{
+            transform: translateX(0%);
+        }
+    }
+}
+
+
+
+.cSubText{
+    font-style: normal;
+    font-size: 1.6rem;
+    line-height: 175%;
+    color: #888888;
+    font-weight: 400;
+    span{
+        font-weight: 600;
+    }
+    &--white{
+        color: #fff;
+    }
+}
+
+.clargeText{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 6.4rem;
+    line-height: 75px;
+    text-transform: uppercase;
+    color: #f37022;
+    
+}
+
+
+
+.cDescText{
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 160%;
+    text-align: justify;
+    &--black{
+        color: #757575;
+    }
+    &--white{
+        color: #fff;
+    }
+}
+
+
+
+.tabbox{
+    border: 1px solid #eeeff3;
+    border-radius: 8px;
+    // max-width: 600px;
+    height: max-content;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    &__header{
+        width: 100%;
+        border-bottom: 1px solid #eeeff3;
+        padding: 12px 20px;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 21px;
+        color: #fff;
+        text-transform: capitalize;
+        background-color:  $blue;
+        @media(max-width:425px){
+            padding: 12px ;
+        }
+    }
+    &__content{
+        padding: 20px;
+        @media(max-width:425px){
+            padding: 12px ;
+        }
+    }
+}
+.cTable{
+    width: 100%;
+    td{
+        padding: 8px 20px;
+        color: #464E5F;
+        @media(max-width:425px){
+            padding: 8px 12px ;
+        }
+    }
+
+    thead{
+        tr{
+            background-color: #F3F6F9;
+            border-bottom: 1px solid $blue;
+            td{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 20px;
+                letter-spacing: 0.03em;
+                color: #464E5F;
+            }
+        }
+    }
+    tbody{
+        tr{
+            transition: all 0.1s ease-in-out;
+            &:hover{
+                background-color: #D7DEE7;
+                cursor: pointer;
+           
+            }
+        }
+        td{
+            font-size: 12px;
+            line-height: 110%;
+            &.fail{
+                color: $red;
+                font-weight: 500;
+            }
+            &.passed{
+                color: $green;
+                font-weight: 500;
+            }
+        }
+    }
+}
+.cForm{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+    .form-group{
+        flex-grow: 1;
+    }
+    label{
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #343434;
+        display: block;
+        margin-bottom: 5px;
+    }
+    input,select{
+        padding: 12px 20px;
+    border: 1px solid #C4C4C4;
+    border-radius: 8px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 23px;
+    color: #343434;
+        &.active,&:focus{
+            background: #F5F7FF;
+            border: 1px solid #3680E3;
+        }
+    }
+}
