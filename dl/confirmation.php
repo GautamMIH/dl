@@ -40,18 +40,20 @@ $mname = $row['MName'];
 
         $querycategory = "SELECT *
         FROM license
-        WHERE category LIKE CONCAT('%', '" . mysqli_real_escape_string($conn,$category) . "', '%')
-        AND NID = '$id'";
+        WHERE category LIKE '%".$category."%' AND NID = '$id'" ;
         $resultcategory = mysqli_query($conn, $querycategory);
         $row = mysqli_fetch_assoc($resultcategory);
-        $category = $row['category'];
-        if(!$resultcategory){
-            echo"<alert>Category already exists!</alert>";
-            header('Location: index.php');
+        if(mysqli_num_rows($resultcategory)>0){
+            $categoryuser = $row['category'];
+        if($categoryuser == $category){
+            $message = "Category already exists!";
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+
         }
-    }
-    else{
-        header('Location: dashboard.php');
+
+        }
+        
     }
 
 ?>
