@@ -1,7 +1,96 @@
 <?php 
 session_start();
 include('dbconnect.php');
+
+if(!isset($_SESSION['session_id'])){
+    header('Location: index.php');
+}
 $sessionid = $_SESSION['session_id'];
+?>
+<?php 
+//get userdata
+$westat ="0";
+$querysel = "SELECT * FROM userdata WHERE sessionid = '$sessionid'";
+$result = mysqli_query($conn, $querysel);
+if (!$result) {
+    die('Could not query database: ' . mysqli_error($conn));
+}
+$row = mysqli_fetch_assoc($result);
+$name = $row['Name'];
+$id = $row['ID'];
+
+//get license data associated with the user
+$querydl = "SELECT * FROM license WHERE NID = '$id'";
+$result = mysqli_query($conn, $querydl);
+if (mysqli_num_rows($result) == 0){
+    $displayStyle = 'style="display: none;"';
+    $content = 'New License';
+}
+else{
+$displayStyle = '';
+$row = mysqli_fetch_assoc($result);
+$dlno = $row['DL_no'];
+$category = $row['category'];
+$expiry = $row['expiry'];
+$felony = $row['felony'];
+$contact = $row['contact'];
+$content = 'Add Category';
+}
+
+//get the exam status associated with the user NID
+$queryexam = "SELECT * FROM exam WHERE NID= '$id'";
+$resultexam = mysqli_query($conn, $queryexam);
+if(mysqli_num_rows($resultexam)==0){
+    $displayStyleexam = 'style="display: none;"';
+}
+else{
+    $displayStyleexam = '';
+    $row =mysqli_fetch_assoc($resultexam);
+    $Exid = $row['Exid'];
+    $ov = $row['ov'];
+    $we = $row['we'];
+    $westat = $row['westat'];
+}
+
+if($westat == "1"){
+    $querytrial = "SELECT * FROM trials WHERE NID = '$id'";
+    $resulttrial = mysqli_query($conn, $querytrial);
+    if(mysqli_num_rows($resulttrial)==0){
+        $displayStyletrial = 'style="display: none;"';
+    }
+    else{
+        $displayStyletrial = '';
+        $row = mysqli_fetch_assoc($resulttrial);
+        $trid = $row['trid'];
+        $ftd = $row['ftd'];
+        $ftr = $row['ftr'];
+        $sctd = $row['sctd'];
+        $str = $row['str'];
+        $ttr = $row['ttr'];
+        $ttd = $row['ttd'];
+
+    }
+}
+else{
+    $displayStyletrial = 'style="display: none;"';
+}
+
+//get the registered vehicles associated with the user NID
+$queryvehicle = "SELECT * FROM vehicle WHERE NID = '$id'";
+$resultvehicle = mysqli_query($conn, $queryvehicle);
+if(mysqli_num_rows($resultvehicle)==0){
+    $displayStylevehicle ='style="display:none;"';
+}
+else{
+    $displayStylevehicle ='';
+    $row = mysqli_fetch_assoc($resultvehicle);
+    $vehicleNo = $row['vehicle_no'];
+    $vehicletype = $row['vehicle_type'];
+    $vehicleoffice = $row['vehicle_office'];
+    $vehicletax = $row['vehicle_tax'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,36 +118,7 @@ $sessionid = $_SESSION['session_id'];
 </head>
 
 <body>
-<?php 
-//get userdata
-$querysel = "SELECT * FROM userdata WHERE sessionid = '$sessionid'";
-$result = mysqli_query($conn, $querysel);
-if (!$result) {
-    die('Could not query database: ' . mysqli_error($conn));
-}
-$row = mysqli_fetch_assoc($result);
-$name = $row['Name'];
-$id = $row['ID'];
 
-//get license data associated with the user
-$querydl = "SELECT * FROM license WHERE NID = '$id'";
-$result = mysqli_query($conn, $querydl);
-if (mysqli_num_rows($result) == 0){
-    $displayStyle = 'style="display: none;"';
-}
-else{
-$displayStyle = '';
-$row = mysqli_fetch_assoc($result);
-$dlno = $row['DL_no'];
-$category = $row['category'];
-$expiry = $row['expiry'];
-$felony = $row['felony'];
-$contact = $row['contact'];
-}
-
-
-
-?>
    <div class="navbar wrapper">
         <div class="navbar__logo">
             <img src="./images/gov-logo.png" alt="" class="navbar__logo__img">
@@ -69,7 +129,7 @@ $contact = $row['contact'];
                 Dashboard
             </a>
             <a href="newLiscence.php" class="navbar__menus__item">
-                New License
+                <?php echo $content?>
             </a>
             <a href="logout.php" class="navbar__menus__item">
                Log Out
@@ -98,12 +158,12 @@ $contact = $row['contact'];
               <button class="nav-link" id="Exam-tab" data-bs-toggle="tab" data-bs-target="#Exam-tab-pane" type="button" role="tab" aria-controls="Exam-tab-pane" aria-selected="false">Exam Status</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="vechicle-tab" data-bs-toggle="tab" data-bs-target="#vechicle-tab-pane" type="button" role="tab" aria-controls="vechicle-tab-pane" aria-selected="false">vehicle</button>
+                <button class="nav-link" id="vechicle-tab" data-bs-toggle="tab" data-bs-target="#vechicle-tab-pane" type="button" role="tab" aria-controls="vechicle-tab-pane" aria-selected="false">Vehicle</button>
               </li>
           </ul>
           <div class="tab-content" id="afterLoginAndRegistrationTabbContent">
                             
-            <div class="tab-pane fade show active"  id="liscenceStatus-tab-pane" role="tabpanel" aria-labelledby="liscenceStatus-tab" tabindex="0">
+        <div class="tab-pane fade show active"  id="liscenceStatus-tab-pane" role="tabpanel" aria-labelledby="liscenceStatus-tab" tabindex="0">
             <?php if (mysqli_num_rows($result) == 0){
                     echo"No License Found. Please apply for a new License!";
                 }?>
@@ -160,10 +220,13 @@ $contact = $row['contact'];
                             </div>
                         </div>
                     </div>
-            </div>
+        </div>
             <div class="tab-pane fade" id="Exam-tab-pane" role="tabpanel" aria-labelledby="Exam-tab" tabindex="0">
+            <?php if (mysqli_num_rows($resultexam) == 0){
+                    echo"No Scheduled Exams!";
+                }?>
                 <div class="liscenceStatus__content">
-                    <div class="tabbox">
+                    <div class="tabbox" <?php echo $displayStyleexam; ?>>
                         <div class="tabbox__header">
                             Important Dates
                         </div>
@@ -174,7 +237,7 @@ $contact = $row['contact'];
                                         <iconify-icon icon="clarity:date-line"></iconify-icon> Office Visit Date:
                                     </div>
                                     <div class="LicenseInformation__item__value">
-                                        2078-8-15
+                                    <?php echo"$ov";?>
                                     </div>
                                 </div>
                                 <div class="LicenseInformation__item">
@@ -182,14 +245,19 @@ $contact = $row['contact'];
                                         <iconify-icon icon="clarity:date-line"></iconify-icon> Written Exam Date:
                                     </div>
                                     <div class="LicenseInformation__item__value">
-                                        2078-8-16
+                                    <?php echo"$we";?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tabbox">
+                    <div class="tabbox" <?php echo $displayStyletrial; ?>>
+                    <?php 
+                                                if($ttr == '0'){
+                                                echo"All Trials Failed. Please Contact your registered Office!";}
+                                                
+                                                ?>
                         <div class="tabbox__header">
                             Trial Information
                         </div>
@@ -203,50 +271,89 @@ $contact = $row['contact'];
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <tr>
-                                        <td>2022-05-08</td>
+                                        <td><?php echo"$ftd";?></td>
                                         <td>First Trial</td>
-                                        <td class="fail">Fail</td>
+                                        <?php 
+                                                if($ftr == '1'){
+                                                $classfirst = 'class=passed';}
+                                                else{
+                                                $classfirst = 'class=fail';
+                                                }
+                                                ?>
+                                        <td <?php echo $classfirst; ?>><?php echo"$ftr";?></td>
                                     </tr>
-                                    <tr>
-                                        <td>2022-06-01</td>
+                                    <?php 
+                                    if($ftr == '1'){
+                                        $displayStylestr = 'style="display: none;"';
+                                    }
+                                    else{
+                                        $displayStylestr = '';
+                                    }
+                                    ?>
+                                    <tr <?php echo $displayStylestr; ?>>
+                                        <td><?php echo"$sctd";?></td>
                                         <td>Second Trial</td>
-                                        <td class="fail">Fail</td>
+                                        <?php 
+                                                if($str == '1'){
+                                                $classsecond = 'class=passed';}
+                                                else{
+                                                $classsecond = 'class=fail';
+                                                }
+                                                ?>
+                                        <td <?php echo $classsecond; ?>><?php echo"$str";?></td>
                                     </tr>
-                                    <tr>
-                                        <td>2022-07-07</td>
+                                    <?php 
+                                    if($str == '1'){
+                                        $displayStylettr = 'style="display: none;"';
+                                    }
+                                    else{
+                                        $displayStylettr = '';
+                                    }
+                                    ?>
+                                    <tr <?php echo $displayStylettr; ?>>
+                                        <td><?php echo"$ttd";?></td>
                                         <td>Third Trial</td>
-                                        <td class="passed">Passed</td>
+                                        <?php 
+                                                if($ttr == '1'){
+                                                $classthird = 'class=passed';}
+                                                else{
+                                                $classthird = 'class=fail';
+                                                }
+                                                ?>
+                                        <td <?php echo $classthird; ?>><?php echo"$ttr";?></td>
                                     </tr>
                                 </tbody>
                            </table>
+                       
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade  active  " id="vechicle-tab-pane" role="tabpanel" aria-labelledby="vechicle-tab" tabindex="0">
-                <div class="tabbox">
+                <div class="tabbox"<?php echo $displayStylevehicle?>>
                     <div class="tabbox__header">
-                        Registered vechicles
+                        Registered vehicles
                     </div>
                     <div class="tabbox__content">
                         <div class="LicenseInformation">
                             <div class="LicenseInformation__item">
                                 <div class="LicenseInformation__item__field">
                                     <iconify-icon icon="solar:card-outline"></iconify-icon>
-                                    vechicle No.:
+                                    Vehicle No.:
                                 </div>
                                 <div class="LicenseInformation__item__value">
-                                    BA-5 -KHA-3963
+                                    <?php echo $vehicleNo?>
                                 </div>
                             </div>
                             <div class="LicenseInformation__item">
                                 <div class="LicenseInformation__item__field">
                                     <iconify-icon icon="iconamoon:category-thin"></iconify-icon>
-                                    vechicle type:
+                                    Vehicle type:
                                 </div>
                                 <div class="LicenseInformation__item__value">
-                                    Motorcycle
+                                    <?php echo $vehicletype?>
                                 </div>
                             </div>
                             <div class="LicenseInformation__item">
@@ -254,16 +361,16 @@ $contact = $row['contact'];
                                     <iconify-icon icon="clarity:date-line"></iconify-icon>Registered office:
                                 </div>
                                 <div class="LicenseInformation__item__value">
-                                    Kalanki
+                                    <?php echo $vehicleoffice?>
                                 </div>
                             </div>
                             <div class="LicenseInformation__item">
                                 <div class="LicenseInformation__item__field">
                                     <iconify-icon icon="solar:danger-circle-linear"></iconify-icon>
-                                    tax paid until:
+                                    Tax paid until:
                                 </div>
                                 <div class="LicenseInformation__item__value">
-                                    2081/3/9
+                                    <?php echo $vehicletax?>
                                 </div>
                             </div>
                         </div>

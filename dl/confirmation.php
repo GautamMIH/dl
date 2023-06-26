@@ -1,3 +1,61 @@
+<?php
+session_start();
+include('dbconnect.php');
+
+if(!isset($_SESSION['session_id'])){
+    header('Location: index.php');
+}
+$sessionid = $_SESSION['session_id'];
+?>
+<?php 
+//get userdata
+$querysel = "SELECT * FROM userdata WHERE sessionid = '$sessionid'";
+$result = mysqli_query($conn, $querysel);
+if (!$result) {
+    die('Could not query database: ' . mysqli_error($conn));
+}
+$row = mysqli_fetch_assoc($result);
+$name = $row['Name'];
+$id = $row['ID'];
+$fname = $row['FName'];
+$mname = $row['MName'];
+
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $usphone = $_POST['Phone'];
+        $category = $_POST['category'];
+        $ovdate = $_POST['date'];
+        $olocation = $_POST['offlocation'];
+        $wn = $_POST['wtn'];
+        $wr = $_POST['wtnsrl'];
+        $tempadd = $_POST['tempadd'];
+    
+        $_SESSION['usphone'] = $usphone;
+        $_SESSION['category'] = $category;
+        $_SESSION['ovdate'] = $ovdate;
+        $_SESSION['olocation'] = $olocation;
+        $_SESSION['wn'] = $wn;
+        $_SESSION['wr'] = $wr;
+        $_SESSION['tempadd'] = $tempadd;
+
+        $querycategory = "SELECT *
+        FROM license
+        WHERE category LIKE CONCAT('%', '" . mysqli_real_escape_string($conn,$category) . "', '%')
+        AND NID = '$id'";
+        $resultcategory = mysqli_query($conn, $querycategory);
+        $row = mysqli_fetch_assoc($resultcategory);
+        $category = $row['category'];
+        if(!$resultcategory){
+            echo"<alert>Category already exists!</alert>";
+            header('Location: index.php');
+        }
+    }
+    else{
+        header('Location: dashboard.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,6 +108,7 @@
             <h3 class="newLiscence__header">
                 confimration
             </h3>
+            <form action ="payment.php" method = "POST">
             <div class="tabbox">
                 <div class="tabbox__header">
                     Preview 
@@ -62,7 +121,7 @@
                                 Name
                             </div>
                             <div class="LicenseInformation__item__value">
-                                Rimisha Shrestha
+                                <?php echo $name?>
                             </div>
                         </div>
                         <div class="LicenseInformation__item">
@@ -71,7 +130,7 @@
                                 Address
                             </div>
                             <div class="LicenseInformation__item__value">
-                                Lalitpur
+                            <?php echo $tempadd?>
                             </div>
                         </div>
                         <div class="LicenseInformation__item">
@@ -79,7 +138,7 @@
                                 <iconify-icon icon="clarity:date-line"></iconify-icon> Fathers Name
                             </div>
                             <div class="LicenseInformation__item__value">
-                                Michael O brien
+                            <?php echo $fname?>
                             </div>
                         </div>
                         <div class="LicenseInformation__item">
@@ -88,16 +147,34 @@
                                 Mothers Name
                             </div>
                             <div class="LicenseInformation__item__value">
-                                Tina English
+                            <?php echo $mname?>
+                            </div>
+                        </div>
+                        <div class="LicenseInformation__item">
+                            <div class="LicenseInformation__item__field">
+                                <iconify-icon icon="solar:danger-circle-linear"></iconify-icon>
+                                Category
+                            </div>
+                            <div class="LicenseInformation__item__value">
+                            <?php echo $category?>
                             </div>
                         </div>
                         <div class="LicenseInformation__item">
                             <div class="LicenseInformation__item__field">
                                 <iconify-icon icon="ph:phone"></iconify-icon>
-                                Spouse Name
+                                Witness Name
                             </div>
                             <div class="LicenseInformation__item__value">
-                                Michelle Brown
+                            <?php echo $wn?>
+                            </div>
+                        </div>
+                        <div class="LicenseInformation__item">
+                            <div class="LicenseInformation__item__field">
+                                <iconify-icon icon="ph:phone"></iconify-icon>
+                                Witness Relation
+                            </div>
+                            <div class="LicenseInformation__item__value">
+                            <?php echo $wr?>
                             </div>
                         </div>
                         <div class="LicenseInformation__item">
@@ -106,33 +183,25 @@
                                 Office Visit Date
                             </div>
                             <div class="LicenseInformation__item__value">
-                                2023-12-01
+                            <?php echo $ovdate?>
                             </div>
                         </div>
                         <div class="LicenseInformation__item">
                             <div class="LicenseInformation__item__field">
                                 <iconify-icon icon="ph:phone"></iconify-icon>
-                                Written Exam Date
+                                Office location
                             </div>
                             <div class="LicenseInformation__item__value">
-                                Michelle Brown
-                            </div>
-                        </div>
-                        <div class="LicenseInformation__item">
-                            <div class="LicenseInformation__item__field">
-                                <iconify-icon icon="ph:phone"></iconify-icon>
-                                office location
-                            </div>
-                            <div class="LicenseInformation__item__value">
-                                Ekantakuna office
+                            <?php echo $olocation?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="cBtn cBtn--red">
-                <span>Download pdf</span>
+            <button class="cBtn cBtn--red" type="submit">
+                <span>Pay and Download pdf</span>
             </button>
+            </form> 
         </div>
     </section>
 

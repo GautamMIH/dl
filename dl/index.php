@@ -55,8 +55,8 @@ if(isset($_SESSION['session_id'])){
                     <input type="text" id="NID" name="NID" placeholder="123-45-545-23423">
                   </div>
                   <div class="form-group">
-                    <label for="password">password</label>
-                    <input type="password" id="password" name="password" placeholder="password">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="phone" placeholder="Phone">
                   </div>
                   <button class="cBtn cBtn--blue">
                     <span>

@@ -1,9 +1,36 @@
+<?php 
+session_start();
+include('dbconnect.php');
+
+if(!isset($_SESSION['session_id'])){
+    header('Location: index.php');
+}
+$sessionid = $_SESSION['session_id'];
+
+
+//get userdata
+$querysel = "SELECT * FROM userdata WHERE sessionid = '$sessionid'";
+$result = mysqli_query($conn, $querysel);
+if (!$result) {
+    die('Could not query database: ' . mysqli_error($conn));
+}
+$row = mysqli_fetch_assoc($result);
+$name = $row['Name'];
+$address = $row['Address'];
+$Fname = $row['FName'];
+$Mname = $row['MName'];
+$phone = $row['phone'];
+$id = $row['ID'];
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
-  <title>web application</title>
+  <title>New License Application</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="title" content="NEEF" />
@@ -66,29 +93,29 @@
             Applicant Registration
         </h3>
         <div class="note">
-            Note: some of the fields are prefilled and some can be modified
+            Note: Personal data is non modifiable. Other extra data can be added manually.
         </div>
         <div class="tabbox">
             <div class="tabbox__header">
-                Static Personal Information
+                 Personal Information
             </div>
             <div class="tabbox__content">
                 <div class="newLiscence__form cForm">
                     <div class="form-group">
                         <label for="Name">Name</label>
-                        <input type="text" id="Name" value="prefilled name" readonly >
+                        <input type="text" id="Name" value="<?php echo $name?>" readonly >
                     </div>
                     <div class="form-group">
                         <label for="Address">Address</label>
-                        <input type="text" id="Address" value="prefilled Address" readonly >
+                        <input type="text" id="Address" value="<?php echo $address?>" readonly >
                     </div>
                     <div class="form-group">
                         <label for="FathersName">Fathers Name</label>
-                        <input type="text" id="FathersName" value="prefilled fathers name" readonly >
+                        <input type="text" id="FathersName" value="<?php echo $Fname?>" readonly >
                     </div>
                     <div class="form-group">
                         <label for="MothersName">Mothers Name</label>
-                        <input type="text" id="MothersName" value="prefilled mothers name" readonly >
+                        <input type="text" id="MothersName" value="<?php echo $Mname?>" readonly >
                     </div>
                 </div>
             </div>
@@ -96,41 +123,68 @@
        
         <div class="tabbox">
             <div class="tabbox__header">
-                User Input Information
+                User Information
             </div>
             <div class="tabbox__content">
-                <form class="userInputInfoForm cForm ">
+                <form class="userInputInfoForm cForm " method ="POST" action = "confirmation.php" id="newlicenseform">
                     <div class="form-group">
                         <label for="Phone">Phone Number</label>
-                        <input type="number" id="Phone" value="984150982">
+                        <input type="number" name = "Phone"id="Phone" value="<?php echo $phone?>">
                     </div>
                     
                     <div class="form-group">
-                        <label for="SpouseName">Category</label>
-                        
-                        <select name="" id="">
-                            <option value="1">A</option>
-                            <option value="2">B</option>
-                            <option value="3">C</option>
+                        <label for="Category">Category</label>
+                        <select name="category" id="Category">
+                            <option value="A">A-Motorcycle, Scooter, Moped</option>
+                            <option value="B">B-Car, Jeep, Delivery Van</option>
+                            <option value="C">C-Tempo, Auto Rickshaw</option>
+                            <option value="D">D-Power Tiller</option>
+                            <option value="E">E-Tractor</option>
+                            <option value="F">F-Minibus, Minitruck</option>
+                            <option value="G">G-Truck, Bus, Lorry</option>
+                            <option value="H">H-RoadRoller, Dozer</option>
+                            <option value="I">I-Crane, Firebrigade, Loader</option>
+                            <option value="J">J-Excavator, Backhoe Loader, Other</option>
+                            <option value="K">K-Scooter, Moped</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="ofd">Office Visit Date</label>
-                        <input type="date" id="ofd" value="2023-01-12">
+                        <input type="date" id="date" name = "date" >
                     </div>
                     <!-- <div class="form-group">
                         <label for="ofd">writtenDate</label>
                         <input type="date" id="ofd" value="2023-01-12">
                     </div> -->
                     <div class="form-group">
-                        <label for="ofd">Office location</label>
-                        <select name="" id="">
-                            <option value="1">kathmandu</option>
-                            <option value="2">chabhail</option>
-                            <option value="3">thulobharyang</option>
+                        <label for="ol">Office location</label>
+                        <select name="offlocation" id="ol">
+                            <option value="Ktm">kathmandu</option>
+                            <option value="Chbl">chabhail</option>
+                            <option value="thbryg">thulobharyang</option>
+                            <option value="rr">Radhe Radhe</option>
+                            <option value="btr">Biratnagar</option>
+                            <option value="pkr">Pokhara</option>
+                            <option value="klk">kalanki</option>
                         </select>
                     </div>
-                    <a class="cBtn cBtn--blue" type="submit" href="./confirmation.php"><span>save</span></button>
+                    <div class="form-group">
+                        <label for="wtn">Witness Name</label>
+                        <input type="text" id="witnessname" name = "wtn">
+                    </div>
+                    <div class="form-group">
+                        <label for="wtr">Witness Relationship</label>
+                        <select name="wtnsrl" id="wtnsrl">
+                            <option value="father">Father</option>
+                            <option value="mother">Mother</option>
+                            <option value="3">Spouse</option>
+                        </select>
+                    </div> 
+                        <div class="form-group">
+                        <label for="tempadd">Temporary Address</label>
+                        <input type="text" id="tempadd"  name = "tempadd">
+                    </div>
+                    <button class="cBtn cBtn--blue" type="submit"><span>save</span></button>
                 </form>
             </div>
         </div>
@@ -145,3 +199,4 @@
 </body>
 
 </html>
+

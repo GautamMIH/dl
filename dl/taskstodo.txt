@@ -1,0 +1,13 @@
+Add multiple vehicles, add multiple license,
+add exam logic,
+ new license,
+more fields in new license,
+ payment using khalti,
+pdf generation,
+
+
+
+also add the quota for each date and disable some dates.
+
+
+email sending for login using NID and phone number
