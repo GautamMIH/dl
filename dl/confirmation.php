@@ -2,12 +2,19 @@
 session_start();
 include('dbconnect.php');
 
+if(isset($SERVER['HTTP_REFERER'])){
+    $referer = $_SERVER['HTTP_REFERER'];
+
+    if($referer !='http://localhost/dl/newLiscence.php'){
+        header('Location: index.php');
+    }
+}
+
 if(!isset($_SESSION['session_id'])){
     header('Location: index.php');
 }
 $sessionid = $_SESSION['session_id'];
-?>
-<?php 
+
 //get userdata
 $querysel = "SELECT * FROM userdata WHERE sessionid = '$sessionid'";
 $result = mysqli_query($conn, $querysel);
@@ -29,7 +36,33 @@ $mname = $row['MName'];
         $wn = $_POST['wtn'];
         $wr = $_POST['wtnsrl'];
         $tempadd = $_POST['tempadd'];
-    
+        
+        if($category == ""){
+            $message = 'Category cannot be empty ';
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+        }
+        elseif($ovdate == ""){
+            $message = 'Date cannot be empty ';
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+        }elseif($olocation == ""){
+            $message = 'Office Location cannot be empty ';
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+        }elseif($wn == ""){
+            $message = 'Witness Name cannot be empty ';
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+        }elseif($wr == ""){
+            $message = 'Witness Relation Cannot be empty cannot be empty ';
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+        }elseif($tempadd == ""){
+            $message = 'Temporary Address cannot be empty ';
+            echo "<script>alert('$message');
+            window.location.href = 'newLiscence.php'</script>";
+        }
         $_SESSION['usphone'] = $usphone;
         $_SESSION['category'] = $category;
         $_SESSION['ovdate'] = $ovdate;
@@ -54,6 +87,9 @@ $mname = $row['MName'];
 
         }
         
+    }
+    else{
+        header("Location:newLiscence.php");
     }
 
 ?>
