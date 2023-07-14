@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <title>web application</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="title" content="NEEF" />
+  <meta name="description" content="write company description " />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <!-- favicon--------------------------------------- -->
+  <link rel="icon" href="" type="image/gif" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <!-- custom css------------------------------------- -->
+  <link rel="stylesheet" href="./css/main.css" />
+  <!-- poppins font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <div class="navbar wrapper">
+        <div class="navbar__logo">
+            <img src="./images/gov-logo.png" alt="" class="navbar__logo__img">
+            NEPAL ELECTRONIC <br>DRIVING LISCENCE
+        </div>
+        <div class="navbar__menus">
+            <a href="Dashboard.html" class="navbar__menus__item active">
+                Dashboard
+            </a>
+            <a href="newLiscence.html" class="navbar__menus__item">
+                New Liscence
+            </a>
+            <a href="index.html" class="navbar__menus__item">
+               Log Out
+            </a>
+        </div>
+   </div>
+
+   <section class="adminpanel wrapper">
+        <h3 class="newLiscence__header">
+            New Applicants
+        </h3>
+        <div class="tabbox">
+            <div class="adminpanel__searchForm">
+                <form action="" class="cForm">
+                    <div class="form-group">
+                        <label for="liscenceid">Search Liscence ID</label>
+                        <div class="adminpanel__searchForm__btn">
+                            <input type="number" id="liscenceid" name="liscenceid">
+                            <button class="cForm__searchBtn" type="submit"><iconify-icon icon="material-symbols:search"></iconify-icon></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="cTable__relative">
+                <table class="cTable">
+                    <thead>
+                        <tr>
+                            <td>Liscence ID</td>
+                            <td>Full Name</td>
+                            <td>Mobile number</td>
+                            <td>Email</td>
+                            <td>Address</td>
+                            <td>Category</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="adminApplicantView.html" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="adminUpdate.html" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td>9861665558</td>
+                            <td>uje555@gmail.com</td>
+                            <td>Balkumari</td>
+                            <td>A</td>
+                            <td>
+                                <div class="crud">
+                                        <a href="" class="crud__item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="view">
+                                            <iconify-icon icon="carbon:view"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Update">
+                                            <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                                        </a>
+                                        <a href="" class="crud__item"
+                                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" 
+                                        data-bs-trigger="hover"
+                                        data-bs-content="Delete">
+                                            <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+   </section>
+
+
+  <script src="./js/vendor.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+</body>
+
+</html>

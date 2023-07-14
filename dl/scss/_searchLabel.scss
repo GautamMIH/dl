@@ -1,0 +1,75 @@
+.adminpanel{
+    .newLiscence__header{
+        text-align: center;
+        color: $blue;
+    }
+   &__searchForm{
+    padding: 30px 20px;
+ 
+    &__btn{
+        position: relative;
+        max-width: 400px;
+        margin: 0 auto;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        labeL{
+            color: $blue;
+
+            font-size: 20px;
+        }
+        input{
+        
+            padding:5px 10px;
+            font-size: 14px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+    }
+    .cForm{
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+       
+        }
+    }
+   }
+    .cTable {
+        td {
+            padding: 15px 20px;
+            color: #464E5F;
+            font-size: 14px;
+        }
+        thead{
+            tr{
+                background-color: $blue;
+                td{
+                    color: #fff;
+                    text-align: center;
+                    // color: $blue;
+                    border: 1px solid #fff;
+                }
+            }
+        }
+        tbody{
+            tr{
+                &:nth-child(even){
+                    background-color: #F3F6F9;
+                    &:hover{
+                        background-color: #D7DEE7;
+                    }
+                }
+            }
+        }
+   }
+
+}
+.cTable__relative{
+    position: relative;
+    overflow: auto;
+}

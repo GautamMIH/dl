@@ -47,9 +47,16 @@ $nlid = $row['nlid'];
 $_SESSION['nlid'] =$nlid;
 
 
-$queryexam = "INSERT INTO exam(NID, ov, we, westat) VALUES('$id','$ovdate','null','0')";
+$queryexam = "INSERT INTO exam(NID, ov, we, westat) VALUES('$id','$ovdate',NULL,NULL)";
 $resultexam = mysqli_query($conn,$queryexam);
- 
+
+$queryresult = "INSERT INTO trials (ftd,ftr,sctd,str,ttd,ttr,NID) VALUES(NULL,NULL,NULL,NULL,NULL,NULL,'$pid')";
+$resultexam = mysqli_query($conn,$queryresult);
+if (!$resultexam) {
+    die('Could not query database: ' . mysqli_error($conn));
+}
+
+sleep(5);
 header('Location: generate_pdf.php');
 
 

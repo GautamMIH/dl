@@ -40,11 +40,10 @@ include('dbconnect.php');
                       $mail->setFrom('gautam.mudbhari16@outlook.com', 'EDLS');
                       $mail->addAddress($email, 'User');
                       $mail->Subject = 'OTP Verification';
-                      $mail->Body = 'Dear User'.$email.'Please enter the following OTP code to further proceed with your actions on our website. Your OTP is: ' . $otp;
+                      $mail->Body = 'Dear User '.$email.'. Please enter the following OTP code to further proceed with your actions on our website. Your OTP is: ' . $otp;
   
                       // Send the email
                       $mail->send();
-                      echo 'Email sent successfully.';
                   } catch (Exception $e) {
                       echo 'Failed to send email. Error: ' . $mail->ErrorInfo;
                   }

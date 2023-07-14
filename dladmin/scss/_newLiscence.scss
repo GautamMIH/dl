@@ -1,0 +1,60 @@
+.newLiscence{
+    .note{
+        color: $red;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 115%;
+    }
+    &__header{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.4rem;
+        line-height: 29px;
+        color: #000000;
+        margin-bottom: 30px;
+    }
+   .tabbox{
+    margin-bottom: 20px;
+   }
+   .cBtn{
+    height: max-content;
+    display: block;
+    margin-top: 35px;
+   }
+}
+
+.newLiscence__form{
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+    @media(max-width: 1400px){
+        grid-template-columns: repeat(2,1fr);
+    }
+    @media(max-width:550px){
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+.userInputInfoForm{
+    display: grid;
+    grid-template-columns: repeat(5,1fr) auto;
+    @media(max-width:1440px){
+        grid-template-columns: repeat(3,1fr);
+    }
+    @media(max-width:1024px){
+        grid-template-columns: repeat(2,1fr);
+    }
+    @media(max-width:550px){
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+.newLiscence .cBtn {
+    width: max-content;
+    @media(max-width:550px){
+        margin-top: 0px;
+    }
+}
+
+

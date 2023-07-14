@@ -1,0 +1,124 @@
+.heroSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom:10px;
+  gap: 20px;
+  position: relative;
+  &::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    content: "";
+    height: 58%;
+    background-color: $blue;
+    z-index: -1;
+  }
+  &__brand{
+    width: 100px;
+    height: auto;
+    img{
+      width: 100%;
+    }
+  }
+  &__title{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    line-height: 120%;
+    text-align: center;
+    }
+  &__main{
+    margin-top: 50px;
+    margin-bottom: 80px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    align-items: center;
+    max-width: 1024px;
+    border-radius: 45px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+ 
+    @media(max-width:767px){
+      grid-template-columns: 1fr;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    &__SignUp{
+      display: flex;
+      flex-direction: column;
+      padding: 45px;
+      @media(max-width:500px){
+        padding: 35px 30px;
+      }
+      .cBtn{
+        width: 50%;
+        margin: 0 auto;
+      }
+     
+      &__title{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 34px;
+        color: #343434;
+        margin-bottom: 30px;
+        text-align: center;
+        span{
+          font-size:4.8rem;
+          color: $blue;
+
+          @media(max-width:1023px){
+            font-size: 3.8rem;
+          }
+        }
+      }
+      &__form{
+        display: flex;
+        flex-direction: column;
+        gap:25px ;
+        label{
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+          color: #343434;
+          display: block;
+          margin-bottom: 5px;
+        }
+        input{
+          padding: 12px 20px;
+          border: 1px solid #C4C4C4;
+          border-radius: 8px;
+          width: 100%;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 23px;
+          color: #343434;
+          &::placeholder{
+            color: #C4C4C4;
+          }
+        }
+      }
+    }
+    &__formImg{
+      height: 600px;
+      @media(max-width:767px){
+       display: none;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

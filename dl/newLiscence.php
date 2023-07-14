@@ -22,6 +22,17 @@ $Mname = $row['MName'];
 $phone = $row['phone'];
 $id = $row['ID'];
 
+//get license data associated with the user
+$querydl = "SELECT * FROM license WHERE NID = '$id'";
+$result = mysqli_query($conn, $querydl);
+if (mysqli_num_rows($result) == 0){
+    $content = 'New License';
+}
+else{
+    $content = 'Add Category';
+}
+
+
 
 
 ?>
@@ -30,7 +41,7 @@ $id = $row['ID'];
 
 <head>
   <!-- Required meta tags -->
-  <title>New License Application</title>
+  <title>License Application</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="title" content="NEEF" />
@@ -80,7 +91,7 @@ $id = $row['ID'];
                 Dashboard
             </a>
             <a href="newLiscence.php" class="navbar__menus__item active">
-                New Liscence
+                <?php echo $content ?>
             </a>
             <a href="logout.php" class="navbar__menus__item">
                Log Out

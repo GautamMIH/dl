@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <title>web application</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="title" content="NEEF" />
+  <meta name="description" content="write company description " />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <!-- favicon--------------------------------------- -->
+  <link rel="icon" href="" type="image/gif" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <!-- custom css------------------------------------- -->
+  <link rel="stylesheet" href="./css/main.css" />
+  <!-- poppins font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <div class="navbar wrapper">
+        <div class="navbar__logo">
+            <img src="./images/gov-logo.png" alt="" class="navbar__logo__img">
+            NEPAL ELECTRONIC <br>DRIVING LISCENCE
+        </div>
+        <div class="navbar__menus">
+            <a href="Dashboard.html" class="navbar__menus__item active">
+                Dashboard
+            </a>
+            <a href="liscenceAdministration.html" class="navbar__menus__item">
+                License Administration
+            </a>
+            <a href="index.html" class="navbar__menus__item">
+               Log Out
+            </a>
+        </div>
+   </div>
+
+   <section class="adminpanel wrapper liscenceAdministration">
+        <h3 class="newLiscence__header">
+            License Administration
+        </h3>
+        <div class="tabbox">
+            <div class="adminpanel__searchForm">
+                <form action="" class="cForm">
+                    <div class="form-group">
+                        <label for="liscenceid">Search Liscence ID</label>
+                        <div class="adminpanel__searchForm__btn">
+                            <input type="number" id="liscenceid" name="liscenceid">
+                            <button class="cForm__searchBtn" type="submit"><iconify-icon icon="material-symbols:search"></iconify-icon></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="cTable__relative">
+                <table class="cTable liscenceAdministration__table">
+                    <thead>
+                        <tr>
+                            <td rowspan="2">Liscence ID</td>
+                            <td rowspan="2" >Full Name</td>
+                            <td rowspan="2" >Liscence Number</td>
+                            <td rowspan="2">Written Exam Date</td>
+                            <td colspan="2" style="text-align: center;">
+                                First Trial
+                            </td >
+                            <td colspan="2" style="text-align: center;">
+                                Second Trial
+                            </td >
+                            <td colspan="2" style="text-align: center;">
+                                Third Trial
+                            </td >
+                            <td  rowspan="2">Category</td>
+                            <td rowspan="2" >Actions</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">Date</td>
+                            <td style="text-align: center;">Status</td>
+                            <td style="text-align: center;">Date</td>
+                            <td style="text-align: center;">Status</td>
+                            <td style="text-align: center;">Date</td>
+                            <td style="text-align: center;">Status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td><input type="number"></td>
+                            <td><input type="date"></td>
+                            <td><input type="date"></td>
+                            <td class="fail"> 
+                                <select name="firsttrialexamstatus" id="firsttrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td class="fail">
+                                <select name="secondtrialexamstatus" id="secondtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select name="thirdtrialexamstatus" id="thirdtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td>A</td>
+                            <td>
+                                <a href="" class="cBtn cBtn--blue">
+                                    <span>Message</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td><input type="number"></td>
+                            <td><input type="date"></td>
+                            <td><input type="date"></td>
+                            <td class="fail"> 
+                                <select name="firsttrialexamstatus" id="firsttrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td class="fail">
+                                <select name="secondtrialexamstatus" id="secondtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select name="thirdtrialexamstatus" id="thirdtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td>A</td>
+                            <td>
+                                <a href="" class="cBtn cBtn--blue">
+                                    <span>Message</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td><input type="number"></td>
+                            <td><input type="date"></td>
+                            <td><input type="date"></td>
+                            <td class="fail"> 
+                                <select name="firsttrialexamstatus" id="firsttrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td class="fail">
+                                <select name="secondtrialexamstatus" id="secondtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select name="thirdtrialexamstatus" id="thirdtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td>A</td>
+                            <td>
+                                <a href="" class="cBtn cBtn--blue">
+                                    <span>Message</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td><input type="number"></td>
+                            <td><input type="date"></td>
+                            <td><input type="date"></td>
+                            <td class="fail"> 
+                                <select name="firsttrialexamstatus" id="firsttrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td class="fail">
+                                <select name="secondtrialexamstatus" id="secondtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select name="thirdtrialexamstatus" id="thirdtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td>A</td>
+                            <td>
+                                <a href="" class="cBtn cBtn--blue">
+                                    <span>Message</span>
+                                </a>
+                            </td>
+                        </tr>
+                       <tr>
+                            <td>100</td>
+                            <td>Yujen Shakya</td>
+                            <td><input type="number" placeholder="100-23-100000"></td>
+                            <td><input type="date"></td>
+                            <td><input type="date"></td>
+                            <td class="fail"> 
+                                <select name="firsttrialexamstatus" id="firsttrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td class="fail">
+                                <select name="secondtrialexamstatus" id="secondtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td><input type="date"></td>
+                            <td>
+                                <select name="thirdtrialexamstatus" id="thirdtrialexamstatus" >
+                                    <option value="passed">passed</option>
+                                    <option value="fail"  >fail</option>
+                                </select>
+                            </td>
+                            <td>A</td>
+                            
+                            <td>
+                                <a href="" class="cBtn cBtn--blue">
+                                    <span>Message</span>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <input type="download" value="./admin.html">
+            </div>
+        </div>
+   </section>
+
+
+  <script src="./js/vendor.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+</body>
+
+</html>
