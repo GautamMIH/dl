@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2023 at 01:26 PM
+-- Generation Time: Jul 14, 2023 at 06:53 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -24,6 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `adid` int(11) NOT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `office` varchar(50) DEFAULT NULL,
+  `pos` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `sessionid` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adid`, `Name`, `office`, `pos`, `email`, `phone`, `password`, `sessionid`) VALUES
+(1, 'Gautam Mudbhari', 'Gongabu', 'admin', 'gautam.mudbhari16@gmail.com', '9840480778', 'Clashon124!', '8f3f5d2e166cb7bacf462374fc58ca7648a28f6ded85fab159'),
+(2, 'Bishal Pahari', 'Gongabu', 'traffic', 'bishalpahari@gmail.com', '9825621986', '12345678', 'e1e08e9efbeee42f89ca1968501d9d217d5a1a642d392a4296');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `exam`
 --
 
@@ -34,13 +59,6 @@ CREATE TABLE `exam` (
   `we` date DEFAULT NULL,
   `westat` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `exam`
---
-
-INSERT INTO `exam` (`Exid`, `NID`, `ov`, `we`, `westat`) VALUES
-(4, 1, '2023-06-28', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -55,15 +73,20 @@ CREATE TABLE `license` (
   `category` varchar(11) DEFAULT NULL,
   `expiry` date DEFAULT NULL,
   `felony` int(11) DEFAULT NULL,
-  `contact` varchar(10) DEFAULT NULL
+  `contact` varchar(10) DEFAULT NULL,
+  `witness` varchar(50) DEFAULT NULL,
+  `witnessrel` varchar(50) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `office` varchar(50) DEFAULT NULL,
+  `DOI` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `license`
 --
 
-INSERT INTO `license` (`DLN`, `NID`, `DL_no`, `category`, `expiry`, `felony`, `contact`) VALUES
-(3, 1, 12456191, 'A', '2027-06-30', NULL, '9840480778');
+INSERT INTO `license` (`DLN`, `NID`, `DL_no`, `category`, `expiry`, `felony`, `contact`, `witness`, `witnessrel`, `address`, `office`, `DOI`) VALUES
+(9, 1, 67, 'A', '2028-07-12', 1, '9840480778', 'Bhojraj Sharma', 'father', 'Lokanthali-8', 'Ktm', '2023-07-12');
 
 -- --------------------------------------------------------
 
@@ -83,13 +106,6 @@ CREATE TABLE `newlicense` (
   `tempaddr` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `newlicense`
---
-
-INSERT INTO `newlicense` (`NID`, `nlid`, `ovdate`, `office`, `category`, `usphone`, `witnessname`, `witnessrel`, `tempaddr`) VALUES
-(1, 37, '2023-06-28', 'Chbl', 'A', '9825621986', 'Bhojraj Sharma', 'father', 'Lokanthali-8');
-
 -- --------------------------------------------------------
 
 --
@@ -106,13 +122,6 @@ CREATE TABLE `trials` (
   `ttr` tinyint(1) DEFAULT NULL,
   `NID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `trials`
---
-
-INSERT INTO `trials` (`trid`, `ftd`, `ftr`, `sctd`, `str`, `ttd`, `ttr`, `NID`) VALUES
-(2, '2023-06-30', 0, '2023-06-30', 1, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -142,7 +151,7 @@ CREATE TABLE `userdata` (
 --
 
 INSERT INTO `userdata` (`ID`, `Name`, `Address`, `FName`, `MName`, `BGroup`, `DOB`, `DOI`, `Gender`, `Nationality`, `pwd`, `sessionid`, `email`, `phone`) VALUES
-(1, 'Gautam Mudbhari', 'lokanthali', 'Bhojraj', 'gayatridevi', 'A+', '2001-08-11', '2023-06-17', 'male', 'Nepali', 'Clashon124', '64996d458aadd0f51', 'gautam.mudbhari16@gmail.com', '9840480778');
+(1, 'Gautam Mudbhari', 'lokanthali', 'Bhojraj', 'gayatridevi', 'A+', '2001-08-11', '2023-06-17', 'male', 'Nepali', 'Clashon124', '64aebd82c928d17ab', 'gautam.mudbhari16@gmail.com', '9840480778');
 
 -- --------------------------------------------------------
 
@@ -169,6 +178,13 @@ INSERT INTO `vehicle` (`NID`, `vehicle_id`, `vehicle_no`, `vehicle_type`, `vehic
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`adid`),
+  ADD UNIQUE KEY `sessionid` (`sessionid`);
 
 --
 -- Indexes for table `exam`
@@ -220,28 +236,34 @@ ALTER TABLE `vehicle`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `adid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `Exid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Exid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `license`
 --
 ALTER TABLE `license`
-  MODIFY `DLN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `DLN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `newlicense`
 --
 ALTER TABLE `newlicense`
-  MODIFY `nlid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `nlid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `trials`
 --
 ALTER TABLE `trials`
-  MODIFY `trid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `trid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `vehicle`
