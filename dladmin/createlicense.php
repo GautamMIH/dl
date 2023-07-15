@@ -112,6 +112,9 @@ $querynlid = "SELECT * FROM newlicense WHERE NID = '$NID' ";
             NEPAL ELECTRONIC <br>DRIVING LISCENCE
         </div>
         <div class="navbar__menus">
+        <a href="allnewapplicants.php" class="navbar__menus__item ">
+                All Applicants
+            </a>
             <a href="adminNewApplicants.php" class="navbar__menus__item">
                 Applicant Search
             </a>

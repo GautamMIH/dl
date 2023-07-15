@@ -43,10 +43,10 @@ if(!isset($_SESSION['session_adid'])){
             NEPAL ELECTRONIC <br>DRIVING LISCENCE
         </div>
         <div class="navbar__menus">
-        <a href="allnewapplicants.php" class="navbar__menus__item ">
+            <a href="allnewapplicants.php" class="navbar__menus__item active">
                 All Applicants
             </a>
-            <a href="adminNewApplicants.php" class="navbar__menus__item active">
+            <a href="adminNewApplicants.php" class="navbar__menus__item">
                 Applicant Search
             </a>
             <a href="Licensesearch.php" class="navbar__menus__item">
@@ -69,17 +69,6 @@ if(!isset($_SESSION['session_adid'])){
             New Applicants
         </h3>
         <div class="tabbox">
-            <div class="adminpanel__searchForm">
-                <form action="" method ="POST" class="cForm">
-                    <div class="form-group">
-                        <label for="liscenceid">Search NLID</label>
-                        <div class="adminpanel__searchForm__btn">
-                            <input type="number" id="liscenceid" name="liscenceid">
-                            <button class="cForm__searchBtn" type="submit"><iconify-icon icon="material-symbols:search"></iconify-icon></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
             
             <div class="cTable__relative">
                 <form action="adminUpdate.php" method="POST">
@@ -98,10 +87,8 @@ if(!isset($_SESSION['session_adid'])){
                     </thead>
                     <tbody>
                     <?php
-                   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $currentDate = date('Y-m-d');
-                    $nlid = $_POST['liscenceid'];
-                    $querynlid = "SELECT * FROM newlicense WHERE nlid = '$nlid' AND ovdate = '$currentDate' ";
+                    $querynlid = "SELECT * FROM newlicense WHERE ovdate = '$currentDate' ORDER BY ovdate ";
                     $result = mysqli_query($conn, $querynlid);
 
                     if(!$result){die('Could not query database: ' . mysqli_error($conn));}
@@ -136,7 +123,7 @@ if(!isset($_SESSION['session_adid'])){
                     }
 
                    }
-                }
+                
 
                 ?>
                         

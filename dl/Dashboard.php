@@ -36,6 +36,20 @@ $felony = $row['felony'];
 $contact = $row['contact'];
 $content = 'Add Category';
 }
+//get the newlicense ID associated with the user NID
+
+$querynlid = "SELECT * FROM newlicense WHERE NID = '$id'";
+$resultnlid =mysqli_query($conn, $querynlid);
+if(mysqli_num_rows($resultnlid)!=0){
+    $displayStylenlid = '';
+    $row = mysqli_fetch_assoc($resultnlid);
+    $nlid = $row['nlid'];
+    $office = $row['office'];
+    $cat = $row['category'];
+}
+else{
+    $displayStylenlid = 'style="display: none;"';
+}
 
 //get the exam status associated with the user NID
 $queryexam = "SELECT * FROM exam WHERE NID= '$id'";
@@ -146,6 +160,15 @@ else{
                 </div>
                 <div class="afterLoginAndRegistration__header__personid__liscenceNo">
                     <strong>NID NO.:</strong> <?php echo"$id";?>
+                </div>
+                <div class="afterLoginAndRegistration__header__personid__liscenceNo" <?php echo $displayStylenlid?>>
+                    <strong>NLID NO.:</strong> <?php echo"$nlid";?>
+                </div>
+                <div class="afterLoginAndRegistration__header__personid__liscenceNo" <?php echo $displayStylenlid?>>
+                    <strong>OFFICE.:</strong> <?php echo"$office";?>
+                </div>
+                <div class="afterLoginAndRegistration__header__personid__liscenceNo" <?php echo $displayStylenlid?>>
+                    <strong>CATEGORY.:</strong> <?php echo"$cat";?>
                 </div>
             </div>
         </div>

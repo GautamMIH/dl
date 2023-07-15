@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if the user's ID and password were found in the database
     if (mysqli_num_rows($result) == 1) {
+
+
         $row = mysqli_fetch_assoc($result);
         $role = $row['pos'];
         $office = $row['office'];

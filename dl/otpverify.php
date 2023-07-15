@@ -5,7 +5,7 @@ $id = $_SESSION['NID'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $otpuser = $_POST['OTP'];
+    $otpuser = mysqli_real_escape_string($conn,$_POST['OTP']);
     if($_SESSION['otp']==$otpuser){
     // Generate a session ID and store it in the session
      $session_id = uniqid();

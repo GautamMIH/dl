@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>INSERT</title>
 </head>
 <body>
-<form id="myForm" action="adminUpdate.php" method="POST">
+<form id="myForm" action="deletelicense.php" method="POST">
   <input type="hidden" name="NID" value="<?php echo $NID?>">
 
   <input type="submit" value="Submit">

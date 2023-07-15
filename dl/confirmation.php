@@ -29,13 +29,15 @@ $mname = $row['MName'];
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $usphone = $_POST['Phone'];
-        $category = $_POST['category'];
-        $ovdate = $_POST['date'];
-        $olocation = $_POST['offlocation'];
-        $wn = $_POST['wtn'];
-        $wr = $_POST['wtnsrl'];
-        $tempadd = $_POST['tempadd'];
+        $usphone = mysqli_real_escape_string($conn,$_POST['Phone']);
+        $category = mysqli_real_escape_string($conn,$_POST['category']);
+        $ovdate = mysqli_real_escape_string($conn,$_POST['date']);
+        $olocation = mysqli_real_escape_string($conn,$_POST['offlocation']);
+        $wn = mysqli_real_escape_string($conn,$_POST['wtn']);
+        $wr = mysqli_real_escape_string($conn,$_POST['wtnsrl']);
+        $tempadd = mysqli_real_escape_string($conn,$_POST['tempadd']);
+
+
         
         if($category == ""){
             $message = 'Category cannot be empty ';
